@@ -1,23 +1,18 @@
 import cv2
 import numpy
+from utils.helper import showDetectedObject
 
-eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 video = cv2.VideoCapture(0)
+
 detectionFrameColor = (0, 255, 0)
-detectionFrameThickness = 2
+detectionFrameThickness = 1
 detectionStrength = 1.1
 
 detectionTextColor = (0, 255, 0)
-detectionTextThickness = 2
-detectionTextSize = 1
-
-
-def showDetected(detectedObject, showText):
-    for (x, y, w, h) in detectedObject:
-            cv2.rectangle(frame, (x, y), (x + w, y + h), detectionFrameColor, detectionFrameThickness)
-            cv2.putText(frame, showText, (x, y + (-10)), cv2.FONT_HERSHEY_SIMPLEX, detectionTextSize, detectionTextColor, detectionTextThickness)
+detectionTextThickness = 1
+detectionTextSize = 0.5
 
 while True:
   
@@ -31,7 +26,7 @@ while True:
 
     if(type(face) == numpy.ndarray):
         # print("face detected")
-        showDetected(face, "Face Detected")
+        showDetectedObject(cv2, face, "Face Detected", frame, detectionFrameColor, detectionFrameThickness, detectionTextColor, detectionTextThickness, detectionTextSize)
 
     cv2.imshow('Face Detection', frame)
 
