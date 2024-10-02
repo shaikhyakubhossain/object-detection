@@ -11,6 +11,10 @@ detectionStrength = 1.2
 while True:
   
     ret, frame = video.read()
+    
+    if(not ret):
+        print("Failed to connect to camera. Exiting ...")
+        
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, scaleFactor=detectionStrength, minNeighbors=5)
 
