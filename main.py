@@ -26,7 +26,7 @@ while True:
         # print("face detected")
         for (x, y, w, h) in faces:
             cv2.rectangle(frame, (x, y), (x + w, y + h), detectionFrameColor, detectionFrameThickness)
-            cv2.putText(frame, "Face Detected", (x, y + -10), cv2.FONT_HERSHEY_SIMPLEX, detectionTextSize, detectionTextColor, detectionTextThickness)
+            cv2.putText(frame, "Face Detected", (x, y + (-10)), cv2.FONT_HERSHEY_SIMPLEX, detectionTextSize, detectionTextColor, detectionTextThickness)
 
     cv2.imshow('Face Detection', frame)
 
